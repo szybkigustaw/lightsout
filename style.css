@@ -1,0 +1,43 @@
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body{
+    background-color: #26171E;
+}
+
+div.grid-container{
+    background-color: #336699;
+    display: grid;
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 0.25em;
+    row-gap: 0.25em;
+    grid-template-rows: auto auto auto auto auto;
+    justify-content: center;
+}
+
+.grid-container > button {
+    width: 8em;
+    background-color: #071013;
+    height: 8em;
+}
+
+h1{
+    font-size: 3em;
+    color: #C0E8F9;
+    text-align: center;
+}
+
+h3{
+    font-size: 1.5em;
+    color: #C0E8F9;
+    text-align: center;
+}
