@@ -16,10 +16,13 @@
         <script src="script.js"></script>
     </head>
 
-    <body onload="randLight()">
+    <body onload="randLight(); Timer()">
         <h1>Lights Out</h1>
         <br />
         <h3 id="sec" onclick="devOpt()">Make all the lights disappear!</h3>
+        <br />
+        <br />
+        <h3 class="time">Time: <p id="timer">00:00</p></h2>
         <br />
         <br />
         <div class="grid-container">

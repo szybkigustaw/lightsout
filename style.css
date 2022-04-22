@@ -12,9 +12,7 @@ body{
 }
 
 div.victory{
-    visibility: hidden;
-    width: 1px;
-    height: 1px;
+    padding: 0.25em;
     display: block;
 }
 
@@ -33,7 +31,9 @@ h3.victory{
 }
 
 button.victory{
-    width: 5em;
+    margin: 0.5em;
+    padding: 0.25em;
+    width: auto;
     height: 2em;
     font-size: 1.5em;
     color:#336699;

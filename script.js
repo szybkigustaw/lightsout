@@ -158,8 +158,28 @@ const devOpt = function()
     }
 };
 
+let Interval;
+let s = 0;
+let m = 0;
+var Timer = function()
+{
+    Interval = setInterval(function(){
+        s++;
+        if(s == 60)
+        {
+            s = 0;
+            m++;
+        }
+        let timer = document.getElementById("timer");
+        timer.innerText = m.toString().padStart(2,'0') + ":" + s.toString().padStart(2,'0');
+    },1000);
+};
+
+
+
 const gameWin = function()
 {
+    clearInterval(Interval);
     let game = document.querySelector('div.grid-container');
     let win = document.createElement('div');
     win.className = "victory";
@@ -168,17 +188,18 @@ const gameWin = function()
     winH1.innerText = "Congrats! You have won!";
     let winH3 = document.createElement('h3');
     win.appendChild(winH3);
-    winH3.innerText = "Click this button, if you want to play again";
+    winH3.innerText = "Your time: " + m.toString().padStart(2,'0') + ":" + s.toString().padStart(2,'0');
     let winBtn = document.createElement('button');
     win.appendChild(winBtn);
     winBtn.className = "victory";
-    winBtn.innerText = "Click me!";
+    winBtn.innerText = "Click me to play again!";
     winBtn.onclick = function(){history.go(0)};
     game.parentNode.replaceChild(win,game);
-    $(".victory").css({"visibility":"visible","width":"auto","height":"auto"});
 
     let cntInfo = document.querySelector("#cnt-info");
     cntInfo.parentNode.removeChild(cntInfo);
     let winBt = document.querySelector("#winBt");
     winBt.parentNode.removeChild(winBt);
+    let time = document.getElementsByClassName("time")[0];
+    time.parentNode.removeChild(time);
 };
