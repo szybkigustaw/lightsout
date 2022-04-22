@@ -1,276 +1,184 @@
-$(function() {
-    $("#1").click(function() {
-        if($("#1").css("background-color") == "rgb(7, 16, 19)")
+const switchLight = function(id) {
+    Id = '#' + parseInt(id);
+    //alert(Id);
+    if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+        $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+        if(parseInt(id) != 0 && parseInt(id) != 6 && parseInt(id) != 11 && parseInt(id) != 16 && parseInt(id) != 21)
         {
-            $("#1").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            ph = parseInt(id)-1;
+            Id = '#' + ph;
+            //alert(Id);
+            if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+                $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            } else {
+                $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            }
         }
-        else
+        if(parseInt(id) != 5 && parseInt(id) != 10 && parseInt(id) != 15 && parseInt(id) != 20 && parseInt(id) != 25)
         {
-            $("#1").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            ph = parseInt(id)+1;
+            Id = '#' + ph;
+            //alert(Id);
+            if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+                $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            } else {
+                $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            }
         }
-    });
+        if(parseInt(id) > 5)
+        {
+            ph = parseInt(id)-5;
+            Id = '#' + ph;
+            //alert(Id);
+            if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+                $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            } else {
+                $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            }
+        }
+        if(parseInt(id) <= 20)
+        {
+            ph = parseInt(id)+5;
+            Id = '#' + ph;
+            //alert(Id);
+            if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+                $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            } else {
+                $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            }
+        }
+    } else {
+        $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+        if(parseInt(id) != 0 && parseInt(id) != 6 && parseInt(id) != 11 && parseInt(id) != 16 && parseInt(id) != 21)
+        {
+            ph = parseInt(id)-1;
+            Id = '#' + ph;
+            //alert(Id);
+            if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+                $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            } else {
+                $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            }
+        }
+        if(parseInt(id) != 5 && parseInt(id) != 10 && parseInt(id) != 15 && parseInt(id) != 20 && parseInt(id) != 25)
+        {
+            ph = parseInt(id)+1;
+            Id = '#' + ph;
+            //alert(Id);
+            if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+                $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            } else {
+                $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            }
+        }
+        if(parseInt(id) > 5)
+        {
+            ph = parseInt(id)-5;
+            Id = '#' + ph;
+            //alert(Id);
+            if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+                $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            } else {
+                $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            }
+        }
+        if(parseInt(id) <= 20)
+        {
+            ph = parseInt(id)+5;
+            Id = '#' + ph;
+            //alert(Id);
+            if($(Id).css("background-color") == "rgb(7, 16, 19)"){
+                $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            } else {
+                $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            }
+        }
+    }
+    let check = checkLight();
+    if(check == 25)
+    {
+        gameWin();
+    }
+    else
+    {
+        let info = document.getElementById('info');
+        info.innerText = check;
+    }
+};
 
-    $("#2").click(function() {
-        if($("#2").css("background-color") == "rgb(7, 16, 19)")
+const randLight = function() {
+    for(let i = 1; i <= 25; i++)
+    {
+        let rand = Math.floor(Math.random() * 2);
+        if(rand == 0)
         {
-            $("#2").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            let Id = '#' + i;
+            $(Id).css({"background-color":"#071013","transition":"background-color 0.2s ease"});
         }
-        else
+        else if(rand == 1)
         {
-            $("#2").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
+            let Id = '#' + i;
+            $(Id).css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
         }
-    });
+    }
+};
 
-    $("#3").click(function() {
-        if($("#3").css("background-color") == "rgb(7, 16, 19)")
+const checkLight = function(){
+    let cnt = 0;
+    for(let i = 1; i <= 25; i++)
+    {
+        let Id = '#' + i;
+        if($(Id).css("background-color") == "rgb(7, 16, 19)")
         {
-            $("#3").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
+            cnt++;
         }
-        else
-        {
-            $("#3").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
+    }
+    return cnt;
+};
 
-    $("#4").click(function() {
-        if($("#4").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#4").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#4").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
 
-    $("#5").click(function() {
-        if($("#5").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#5").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#5").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
+let secCnt = 0;
+const devOpt = function()
+{
+    if(secCnt < 4)
+    {
+        secCnt++;
+    }
+    else
+    {
+        let text = document.getElementById('sec');
+        const winBt = document.createElement("button");
+        text.parentNode.replaceChild(winBt,text);
+        winBt.innerHTML = "WIN";
+        winBt.style.marginLeft = "auto";
+        winBt.style.marginRight = "auto";
+        winBt.style.display = "block";
+        winBt.id = "winBt";
+        winBt.onclick = gameWin;
+    }
+};
 
-    $("#6").click(function() {
-        if($("#6").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#6").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#6").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
+const gameWin = function()
+{
+    let game = document.querySelector('div.grid-container');
+    let win = document.createElement('div');
+    win.className = "victory";
+    let winH1 = document.createElement('h1');
+    win.appendChild(winH1);
+    winH1.innerText = "Congrats! You have won!";
+    let winH3 = document.createElement('h3');
+    win.appendChild(winH3);
+    winH3.innerText = "Click this button, if you want to play again";
+    let winBtn = document.createElement('button');
+    win.appendChild(winBtn);
+    winBtn.className = "victory";
+    winBtn.innerText = "Click me!";
+    winBtn.onclick = function(){history.go(0)};
+    game.parentNode.replaceChild(win,game);
+    $(".victory").css({"visibility":"visible","width":"auto","height":"auto"});
 
-    $("#7").click(function() {
-        if($("#7").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#7").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#7").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#8").click(function() {
-        if($("#8").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#8").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#8").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#9").click(function() {
-        if($("#9").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#9").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#9").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#10").click(function() {
-        if($("#10").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#10").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#10").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#11").click(function() {
-        if($("#11").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#11").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#11").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#12").click(function() {
-        if($("#12").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#12").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#12").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#13").click(function() {
-        if($("#13").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#13").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#13").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#14").click(function() {
-        if($("#14").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#14").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#14").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#15").click(function() {
-        if($("#15").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#15").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#15").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#16").click(function() {
-        if($("#16").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#16").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#16").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#17").click(function() {
-        if($("#17").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#17").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#17").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#18").click(function() {
-        if($("#18").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#18").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#18").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#19").click(function() {
-        if($("#19").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#19").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#19").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#20").click(function() {
-        if($("#20").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#20").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#20").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#21").click(function() {
-        if($("#21").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#21").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#21").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#22").click(function() {
-        if($("#22").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#22").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#22").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#23").click(function() {
-        if($("#23").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#23").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#23").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#24").click(function() {
-        if($("#24").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#24").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#24").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-
-    $("#25").click(function() {
-        if($("#25").css("background-color") == "rgb(7, 16, 19)")
-        {
-            $("#25").css({"background-color":"#F3E6E2","transition":"background-color 0.2s ease"});
-        }
-        else
-        {
-            $("#25").css({"background-color":"#071013","transition":"background-color 0.2s ease"});
-        }
-    });
-});
+    let cntInfo = document.querySelector("#cnt-info");
+    cntInfo.parentNode.removeChild(cntInfo);
+    let winBt = document.querySelector("#winBt");
+    winBt.parentNode.removeChild(winBt);
+};

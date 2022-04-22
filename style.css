@@ -11,6 +11,56 @@ body{
     background-color: #26171E;
 }
 
+div.victory{
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    display: block;
+}
+
+h1.victory{
+    margin: 0.5em;
+    font-size: 3em;
+    color:#C0E8F9;
+    text-align: center;
+}
+
+h3.victory{
+    margin: 0.5em;
+    font-size: 1.5em;
+    color:#C0E8F9;
+    text-align: center;
+}
+
+button.victory{
+    width: 5em;
+    height: 2em;
+    font-size: 1.5em;
+    color:#336699;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#cnt-info{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+p:nth-of-type(1){
+    font-size: 1.5em;
+    color: #C0E8F9;
+    text-align: center;
+}
+
+#info{
+    margin-left: 0.5em;
+    font-size: 1.25em;
+    color: #C0E8F9;
+    text-align: center;
+}
+
 div.grid-container{
     background-color: #336699;
     display: grid;
